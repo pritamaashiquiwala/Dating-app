@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chhinaal - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    /* PROFILE SECTION */
+    .profile {
+      margin-top: 30px;
+    }
+
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+    }
+
+    /* Hide default file input */
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Custom upload button */
+    .upload-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #ffffff;
+      color: #ff4d6d;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* MATCH CARDS */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      color: black;
+      width: 250px;
+      padding: 15px;
+      border-radius: 15px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    /* BUTTONS */
+    button {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #e63e5c;
+    }
+
+    .logout {
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Welcome to Chhinaal 💖</h1>
+  <p>Find people who match your vibe</p>
+</header>
+
+<!-- USER PROFILE -->
+<div class="profile">
+  <img src="user.png" id="profilePic" alt="Your Photo">
+  <h2>Hello, Handsome👋</h2>
+
+  <label for="photoUpload" class="upload-btn">Upload your Photo</label>
+  <input type="file" id="photoUpload" accept="image/*" onchange="loadPhoto(event)">
+</div>
+
+<!-- MATCH CARDS -->
+<div class="cards">
+
+  <div class="card">
+    <img src="kaladick.png" alt="Profile">
+    <h3>KALA DICK</h3>
+    <p>Age: 21</p>
+    <p>Likes: Music 🎶, Travel ✈️</p>
+    <button onclick="openMatch('kaladick.png','KALA DICK',21,'Music, Travel')">❤️ Like</button>
+
+  </div>
+
+  <div class="card">
+    <img src="lundu.png" alt="Profile">
+    <h3>AFRICAN LANDU</h3>
+    <p>Age: 22</p>
+    <p>Likes: Movies 🎬, Coffee ☕</p>
+    <button onclick="openMatch('lundu.png','AFRICAN LANDU',22,'Movies, Coffee')">❤️ Like</button>
+
+  </div>
+
+</div>
+
+<!-- LOGOUT -->
+<div class="logout">
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+  function loadPhoto(event) {
+    const image = document.getElementById("profilePic");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  }
+
+  function logout() {
+    window.location.href = "index.html";
+  }
+</script>
+<script>
+function openMatch(img, name, age, likes) {
+  localStorage.setItem("matchImg", img);
+  localStorage.setItem("matchName", name);
+  localStorage.setItem("matchAge", age);
+  localStorage.setItem("matchLikes", likes);
+  window.location.href = "match.html";
+}
+</script>
+
+
+</body>
+</html>

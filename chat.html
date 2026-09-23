@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ff5f9e, #7b2ff7);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .msg {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      max-width: 70%;
+    }
+
+    .msg.you {
+      align-self: flex-end;
+      background: #ff2e63;
+    }
+
+    .msg.them {
+      align-self: flex-start;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      margin-left: 10px;
+      background: #ff2e63;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  Chat with <span id="chatName"></span> 💖
+</header>
+
+<div class="chat-box" id="chatBox">
+  <div class="msg them">Hey 👋</div>
+</div>
+
+<div class="input-area">
+  <input type="text" id="message" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMessage()">
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+  const name = localStorage.getItem("matchName");
+  document.getElementById("chatName").innerText = name;
+
+  const replies = [
+    "Haha 😄 nice!",
+    "That sounds interesting 💖",
+    "Tell me more 👀",
+    "I was thinking the same 😊",
+    "You seem fun 😌",
+    "Haha that's cute ❤️",
+    "OMG really? 😲",
+    "I like that 😍"
+  ];
+
+  function sendMessage() {
+    const input = document.getElementById("message");
+    const text = input.value.trim();
+    if (text === "") return;
+
+    // Your message
+    const msg = document.createElement("div");
+    msg.className = "msg you";
+    msg.innerText = text;
+    chatBox.appendChild(msg);
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Auto reply after delay
+    setTimeout(autoReply, 1200);
+  }
+
+  function autoReply() {
+    const reply = replies[Math.floor(Math.random() * replies.length)];
+
+    const msg = document.createElement("div");
+    msg.className = "msg them";
+    msg.innerText = reply;
+
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+</script>
+
+</body>
+</html>

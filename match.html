@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>It's a Match!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+
+      /* Romantic background */
+      background: radial-gradient(circle at top, #ff5f9e 0%, #7b2ff7 70%);
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+
+      /* Zoom effect */
+      transform: scale(1.4);
+    }
+
+    .match-box {
+      width: 90%;
+      max-width: 400px;
+      padding: 30px 20px;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-family: "Brush Script MT", cursive;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .photos img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+    }
+
+    .info {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .continue-btn {
+      width: 100%;
+      background: #ff2e63;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .continue-btn:hover {
+      background: #e02656;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="match-box">
+
+  <div class="title">It's a Match!</div>
+
+  <div class="subtitle">
+    You and <span id="matchName"></span> have liked each other!
+  </div>
+
+  <div class="photos">
+    <img src="user.jpeg" alt="You">
+    <img id="matchImg" src="" alt="Match">
+  </div>
+
+  <div class="info">
+    You can now send a message and start chatting 💬
+  </div>
+
+  <button class="continue-btn" onclick="goNext()">CONTINUE</button>
+
+</div>
+
+<script>
+  document.getElementById("matchImg").src =
+    localStorage.getItem("matchImg");
+
+  document.getElementById("matchName").innerText =
+    localStorage.getItem("matchName");
+
+  function goNext() {
+    window.location.href = "chat.html";
+  }
+</script>
+
+</body>
+</html>

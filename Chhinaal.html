@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chhinaal - Find Your Match</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <center>
+    <img src="logo.png" alt="Chhinaal Logo" class="logo" width="250" height="250">
+    <br>
+    <br>
+    <h1>Welcome to Chhinaal</h1><br>
+    <h2><p>Your journey to love begins here.</p></h2>
+  </center>
+</header>
+
+<style>
+  .logo {
+    border-radius: 50%;   /* makes the image circular */
+    border: 4px solid #4CAF50; /* optional: adds a nice border */
+    object-fit: cover;    /* ensures the image fills the circle */
+  }
+</style>
+
+  <section class="signup">
+  <center>
+    <h2>Create Your Profile</h2>
+
+    <form onsubmit="login(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+
+      <select required>
+        <option value="">Looking for...</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="any">Any</option>
+      </select>
+      <br><br>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </center>
+</section>
+
+
+  <footer><center>
+    <br><p>© 2026 Chhinaal. All rights reserved.</p>
+  </footer>
+</body>
+<style>
+  body {
+    background-image: url("background.png"); /* your image file */
+    background-size: cover;   /* makes it fill the screen */
+    background-position: center; /* centers the image */
+    background-repeat: no-repeat; /* avoids tiling */
+  }
+</style>
+<script>
+function login(event) {
+  event.preventDefault(); // stop page reload
+  window.location.href = "dashboard.html";
+}
+</script>
+
+</html>
+
